@@ -4,7 +4,7 @@
 - name: setup
   junos_config:
     lines:
-      - set system host-name {{ inventory_hostname }}
+      - set system host-name foobar
     provider: "{{ netconf }}"
 
 - name: configure single command
@@ -17,7 +17,7 @@
 - assert:
     that:
       - "result.changed == true"
-      - "'set system host-name localhost' in result.updates"
+      - "'+  host-name localhost;' in result.diff.prepared"
 
 - name: check single command idempotent
   junos_config:
