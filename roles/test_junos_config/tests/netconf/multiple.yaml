@@ -8,8 +8,6 @@
       - "delete interfaces lo0"
     provider: "{{ netconf }}"
   register: test
-# FIXME Bug https://github.com/ansible/ansible-modules-core/issues/5040
-  ignore_errors: true
 
 - name: configure multiple commands
   junos_config:
