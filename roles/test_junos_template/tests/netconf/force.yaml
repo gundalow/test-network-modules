@@ -30,16 +30,13 @@
     that:
       - "result.changed == true"
       - "'1.1.1.1/32' in result.diff.prepared"
-# FIXME BUG? action:overwrite doesn't trigger a change
-  ignore_errors: true
 
 - name: teardown
   junos_config:
     lines:
       - set system host-name {{ inventory_hostname }}
       - delete interfaces lo0
-# FIXME BUG to change above junos_template to whatever "force:" is in 2.2
-#    force: yes
+    action: overwrite
     provider: "{{ netconf }}"
 
 - debug: msg="END netconf/force.yaml"
