@@ -7,7 +7,7 @@
       - show version
       - show interfaces fxp0
     encoding: json
-    waitfor:
+    wait_for:
       - "result[0].software-information[0].host-name[0].data contains vsrx01"
       - "result[1].interface-information[0].physical-interface[0].name[0].data contains fxp"
     provider: "{{ netconf }}"

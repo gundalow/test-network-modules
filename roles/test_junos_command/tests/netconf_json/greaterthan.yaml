@@ -7,8 +7,8 @@
       - show version
       - show interfaces fxp0
     encoding: json
-    waitfor:
-      - "result[1].interface-information[0].physical-interface[0].mtu[0].data gt 1500"
+    wait_for:
+      - "result[1]interface-information[0]physical-interface[0]mtu[0] gt 1500"
     provider: "{{ netconf }}"
   register: result
 
@@ -24,7 +24,7 @@
       - show version
       - show interfaces fxp0
     encoding: json
-    waitfor:
+    wait_for:
       - "result[1].interface-information[0].physical-interface[0].mtu[0].data > 1500"
     provider: "{{ netconf }}"
   register: result

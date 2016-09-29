@@ -8,13 +8,12 @@
       - show interfaces fxp0
     format: xml
     wait_for:
-      - "stdout[1]['interface-information']['physical-interface'].mtu[0]"
+      - "result[1]interface-information[0]physical-interface[0]mtu[0]data gt 1500"
     provider: "{{ netconf }}"
   register: result
 
-- name: die here
-  fail:
-    msg: "{{ result.stdout[1] }}"
+- fail:
+    msg: "{{ result.stdout }}"
 
 - assert:
     that:
@@ -28,7 +27,7 @@
       - show version
       - show interfaces fxp0
     format: xml
-    waitfor:
+    wait_for:
       - "result[1].rpc-reply.interface-information.physical-interface.mtu[0] > 1500"
     provider: "{{ netconf }}"
   register: result

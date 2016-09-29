@@ -6,7 +6,7 @@
     commands:
       - show version
       - show interfaces fxp0
-    waitfor:
+    wait_for:
       - "result[0].software-information[0].host-name[0].data == vsrx01"
       - "result[1].interface-information[0].physical-interface[0].name[0].data == fxp0"
     encoding: json
@@ -24,7 +24,7 @@
     commands:
       - show version
       - show interfaces fxp0
-    waitfor:
+    wait_for:
       - "result[0].software-information[0].host-name[0].data eq vsrx01"
       - "result[1].interface-information[0].physical-interface[0].name[0].data eq fxp0"
     encoding: json

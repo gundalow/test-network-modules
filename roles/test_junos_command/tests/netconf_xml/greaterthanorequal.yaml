@@ -7,7 +7,7 @@
       - show version
       - show interfaces fxp0
     format: xml
-    waitfor:
+    wait_for:
       - "result[1].rpc-reply.interface-information.physical-interface.mtu[0] ge 1514"
     provider: "{{ netconf }}"
   register: result
@@ -24,7 +24,7 @@
       - show version
       - show interfaces fxp0
     format: xml
-    waitfor:
+    wait_for:
       - "result[1].rpc-reply.interface-information.physical-interface.mtu[0] >= 1514"
     provider: "{{ netconf }}"
   register: result
